@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            interactionManager.InteractDoor(this);
+            interactionManager.Interact(this);
         }
 
 

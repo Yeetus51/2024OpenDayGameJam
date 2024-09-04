@@ -6,6 +6,7 @@ public class InteractionManager : MonoBehaviour
 {
     [SerializeField] DoorManager doorManager;
     [SerializeField] NpcManager npcManager;
+    [SerializeField] CameraManager cameraManager; 
 
 
     [SerializeField] float interactionRange = 0.5f;
@@ -42,7 +43,7 @@ public class InteractionManager : MonoBehaviour
 
     }
 
-    public void InteractDoor(PlayerController player)
+    public void Interact(PlayerController player)
     {
 
         float closestDoorDist = float.MaxValue;
