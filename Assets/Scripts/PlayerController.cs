@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     bool canMoveSelf = true;
     bool canMoveNpc = true;
 
-    public int keys = 0;
+    public bool hasKey = false;
 
     NpcController targetNpc;
     bool jumpingToNpc = false;
@@ -81,16 +81,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "key")
-        {
-            Destroy(other.gameObject);
-            keys++; 
-        }
-    }
-
-
 
     public void JumpToNpc(NpcController npc)
     {
@@ -152,7 +142,12 @@ public class PlayerController : MonoBehaviour
 
                 targetNpc.stopNpc = true;
                 canMoveNpc = true;
-                tag = "NpcPlayer"; 
+                tag = "NpcPlayer";
+
+                if (targetNpc.tag == "Guard")
+                {
+                    hasKey = true;
+                }
             }
         }
 
@@ -172,6 +167,10 @@ public class PlayerController : MonoBehaviour
                 boxCollider.isTrigger = false;
                 targetNpc.enableNpc = true;
                 tag = "Player";
+                if (targetNpc.tag == "Guard")
+                {
+                    hasKey = false;
+                }
 
                 targetNpc = null;
             }

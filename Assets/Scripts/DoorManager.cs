@@ -13,10 +13,9 @@ public class DoorManager : MonoBehaviour
     public void Interact(DoorController door, PlayerController player)
     {
 
-        if (player.keys > 0)
+        if (player.hasKey)
         {
             door.OpenDoor();
-            player.keys--; 
         }
     }
 

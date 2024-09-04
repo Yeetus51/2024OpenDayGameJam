@@ -6,7 +6,6 @@ public class NpcManager : MonoBehaviour
 {
     public List<NpcController> npcs;
 
-    [SerializeField] Movement npcMovement; 
 
 
 
