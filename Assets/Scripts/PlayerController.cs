@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public bool hasKey = false;
     public bool hasCamAccess = false;
+    public bool canCleanPiss = false;
 
     NpcController targetNpc;
     bool jumpingToNpc = false;
@@ -154,6 +155,10 @@ public class PlayerController : MonoBehaviour
                 {
                     hasCamAccess = true;
                 }
+                if (targetNpc.tag == "Cleaner")
+                {
+                    canCleanPiss = true;
+                }
             }
         }
 
@@ -180,6 +185,10 @@ public class PlayerController : MonoBehaviour
                 if (targetNpc.tag == "Engineer")
                 {
                     hasCamAccess = false;
+                }
+                if (targetNpc.tag == "Cleaner")
+                {
+                    canCleanPiss = false;
                 }
 
                 targetNpc = null;

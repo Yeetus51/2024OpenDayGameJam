@@ -7,6 +7,7 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] DoorManager doorManager;
     [SerializeField] NpcManager npcManager;
     [SerializeField] CameraManager cameraManager; 
+    [SerializeField] PissManager pissManager;
 
 
     [SerializeField] float interactionRange = 0.5f;
@@ -48,8 +49,12 @@ public class InteractionManager : MonoBehaviour
 
         float closestDoorDist = float.MaxValue;
         float closestCamDist = float.MaxValue;
+        float closestPissDist = float.MaxValue;
+
+
         DoorController closestDoor = null; 
         Camera closestCam = null;
+        PissController closestPiss = null;
 
         foreach (var door in doorManager.doorControllers)
         {
@@ -69,13 +74,25 @@ public class InteractionManager : MonoBehaviour
                 closestCam = cam;
             }
         }
+        foreach (var piss in pissManager.pisses)
+        {
+            float dist = (player.transform.position - piss.transform.position).magnitude;
+            if (dist < closestPissDist)
+            {
+                closestPissDist = dist;
+                closestPiss = piss;
+            }
+        }
 
         if (closestCamDist < closestDoorDist && closestCamDist <= interactionRange)
         {
             cameraManager.Interact(closestCam, player); 
-        } else if (closestDoorDist <= interactionRange)
+        } else if (closestDoorDist < closestPissDist && closestDoorDist <= interactionRange)
         {
             doorManager.Interact(closestDoor, player);
+        } else if(closestPissDist <= interactionRange)
+        {
+            pissManager.Interact(closestPiss, player); 
         }
 
 

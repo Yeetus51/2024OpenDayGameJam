@@ -7,10 +7,6 @@ public class NpcManager : MonoBehaviour
     public List<NpcController> npcs;
 
 
-
-
-
-
     public void Interact(NpcController npc, PlayerController player)
     {
 

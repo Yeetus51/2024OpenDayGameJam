@@ -8,6 +8,7 @@ TagManager:
   - NpcPlayer
   - Guard
   - Engineer
+  - Cleaner
   layers:
   - Default
   - TransparentFX
