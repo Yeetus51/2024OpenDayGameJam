@@ -9,7 +9,7 @@ public class NpcController : MonoBehaviour
     public bool enableNpc; 
     public bool stopNpc;
 
-    Vector3[] directions = { new Vector3(1,0,0), new Vector3(-1, 0, 0), new Vector3(0, 0, 1), new Vector3(0, 0, -1), new Vector3(0, 0, 0)};
+    Vector3[] directions = { new Vector3(1,0,0), new Vector3(-1, 0, 0), new Vector3(0, 1, 0), new Vector3(0, -1, 0), new Vector3(0, 0, 0)};
 
     Vector3 movementDirection;
 
@@ -52,7 +52,7 @@ public class NpcController : MonoBehaviour
         if(Random.Range(0, 2) == 0 && direction.magnitude > 0)
         {
             int xy = Random.Range(0, 2);
-            direction += xy == 0 ? Vector3.forward : -Vector3.forward;
+            direction += xy == 0 ? Vector3.up : -Vector3.up;
         }
 
         float duration = Random.Range(minDuration, maxDuration);

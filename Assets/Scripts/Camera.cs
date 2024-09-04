@@ -35,7 +35,7 @@ public class Camera : MonoBehaviour
         for (int i = 0; i < resolution; i++)
         {
             Vector3 direction = transform.forward;
-            direction = Quaternion.Euler(0,  -FOV/resolution + FOV * i + rotation, 0) * direction;
+            direction = Quaternion.Euler(0, 0, -FOV / resolution + FOV * i + rotation) * direction;
 
             RaycastHit hit;
             if (Physics.Raycast(transform.position, direction, out hit, DOF)) 
