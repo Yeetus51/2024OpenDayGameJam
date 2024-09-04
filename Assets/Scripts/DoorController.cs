@@ -6,8 +6,9 @@ public class DoorController : MonoBehaviour
 {
     [SerializeField] Animator animator;
 
-    [SerializeField] bool open; 
+    [SerializeField] bool open;
     [SerializeField] bool close;
+    [SerializeField] ParticleSystem SmokeP;
 
     private void Update()
     {
@@ -29,7 +30,8 @@ public class DoorController : MonoBehaviour
 
     public void OpenDoor()
     {
-        open = true; 
+        open = true;
+        Instantiate(SmokeP, transform.position, Quaternion.Euler(-90, 0, -50));
     }
 
 }

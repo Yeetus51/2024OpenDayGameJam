@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  speed: 25
+  speed: 4
   rb: {fileID: 114547405}
 --- !u!65 &114547407
 BoxCollider:
@@ -1181,7 +1181,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.7, y: 0, z: -0.75}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionManager: {fileID: 1429021748}
-  hasKey: 0
+  hasKey: 1
 --- !u!1 &1389086211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,7 +1262,7 @@ Transform:
   m_GameObject: {fileID: 1389086211}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.856936, y: -4.474804, z: -0.6873885}
+  m_LocalPosition: {x: 0, y: -4.474804, z: -0.6873885}
   m_LocalScale: {x: 0.04, y: 0.15384614, z: 0.19}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1300,6 +1300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorManager: {fileID: 1543893085}
+  SmokeP: {fileID: 6617432408544336118, guid: 60a467d67a5dbab428577e29835d2d0e, type: 3}
 --- !u!4 &1429021749
 Transform:
   m_ObjectHideFlags: 0
@@ -1462,7 +1463,7 @@ Transform:
   m_GameObject: {fileID: 1543893084}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2830638, y: 4.474804, z: 0.9173885}
+  m_LocalPosition: {x: -4.19, y: 4.474804, z: 0.9173885}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1533,7 +1534,7 @@ Transform:
   m_GameObject: {fileID: 1632989724}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.22, y: -4.474804, z: -0.6873885}
+  m_LocalPosition: {x: 16.14, y: -4.474804, z: -0.6873885}
   m_LocalScale: {x: 0.04, y: 0.15384614, z: 0.19}
   m_ConstrainProportionsScale: 0
   m_Children:

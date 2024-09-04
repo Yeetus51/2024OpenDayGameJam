@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
-    [SerializeField] DoorManager doorManager; 
+    [SerializeField] DoorManager doorManager;
 
 
     public void Interact(PlayerController player)
     {
-        doorManager.Interact(player); 
+        doorManager.Interact(player);
     }
 
 
