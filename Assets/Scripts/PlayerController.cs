@@ -144,6 +144,8 @@ public class PlayerController : MonoBehaviour
 
                 targetNpc.stopNpc = true;
                 canMoveNpc = true;
+                float xScale = targetNpc.transform.localScale.x > 0 ? 1 : -1;
+                transform.localScale = new Vector3(xScale, 1, 1); 
                 tag = "NpcPlayer";
 
                 if (targetNpc.tag == "Guard")
