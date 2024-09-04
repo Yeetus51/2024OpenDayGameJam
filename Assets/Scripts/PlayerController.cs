@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     bool canMoveNpc = true;
 
     public bool hasKey = false;
+    public bool hasCamAccess = false;
 
     NpcController targetNpc;
     bool jumpingToNpc = false;
@@ -148,6 +149,11 @@ public class PlayerController : MonoBehaviour
                 {
                     hasKey = true;
                 }
+
+                if (targetNpc.tag == "Engineer")
+                {
+                    hasCamAccess = true;
+                }
             }
         }
 
@@ -170,6 +176,10 @@ public class PlayerController : MonoBehaviour
                 if (targetNpc.tag == "Guard")
                 {
                     hasKey = false;
+                }
+                if (targetNpc.tag == "Engineer")
+                {
+                    hasCamAccess = false;
                 }
 
                 targetNpc = null;
