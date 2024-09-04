@@ -26,7 +26,7 @@ public class Camera : MonoBehaviour
         if (timer > periodDuration) mult = -1;
         else if (timer < periodDuration * mult) mult = 1;
 
-        transform.Rotate(Vector3.up, angleChange * Time.deltaTime * (timer > 0? 1 : -1));
+        transform.Rotate(Vector3.forward, angleChange * Time.deltaTime * (timer > 0? 1 : -1));
 
 
 
@@ -34,7 +34,7 @@ public class Camera : MonoBehaviour
 
         for (int i = 0; i < resolution; i++)
         {
-            Vector3 direction = transform.forward;
+            Vector3 direction = -transform.up;
             direction = Quaternion.Euler(0, 0, -FOV / resolution + FOV * i + rotation) * direction;
 
             RaycastHit hit;
