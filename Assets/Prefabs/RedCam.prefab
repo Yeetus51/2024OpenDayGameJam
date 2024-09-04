@@ -106,6 +106,8 @@ MonoBehaviour:
   resolution: 12
   DOF: 5.1
   rotation: -29.6
+  light: {fileID: 0}
+  active: 0
 --- !u!65 &4860721077432606540
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -153,7 +155,7 @@ MonoBehaviour:
   - {x: 0.16000009, y: -0.15999985, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 38704
+  m_InstanceId: 33016
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.16000009, y: 0.15999985, z: 0}
@@ -219,7 +221,7 @@ MonoBehaviour:
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
   m_ShadowIntensityEnabled: 1
-  m_ShadowIntensity: 0.93
+  m_ShadowIntensity: 1
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
