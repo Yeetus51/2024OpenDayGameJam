@@ -1,0 +1,69 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Camera : MonoBehaviour
+{
+
+    [SerializeField] float angleChange;
+    [SerializeField] float periodDuration;
+
+
+    [SerializeField] float FOV;
+    [SerializeField] int resolution;
+    [SerializeField] float DOF;
+    [SerializeField] float rotation; 
+
+
+    float timer;
+    int mult = 1;
+
+
+
+    private void Update()
+    {
+        timer += Time.deltaTime * mult;
+        if (timer > periodDuration) mult = -1;
+        else if (timer < periodDuration * mult) mult = 1;
+
+        transform.Rotate(Vector3.up, angleChange * Time.deltaTime * (timer > 0? 1 : -1));
+
+
+
+
+
+        for (int i = 0; i < resolution; i++)
+        {
+            Vector3 direction = transform.forward;
+            direction = Quaternion.Euler(0,  -FOV/resolution + FOV * i + rotation, 0) * direction;
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, direction, out hit, DOF)) 
+            {
+                if(hit.transform.tag == "Player")
+                {
+                    Debug.Log("Game OVER!"); 
+                }
+            }
+
+            Debug.DrawRay(transform.position, direction * DOF, Color.red);
+
+        }
+
+
+
+
+
+
+
+    }
+    private void FixedUpdate()
+    {
+
+
+        
+    }
+
+
+
+}

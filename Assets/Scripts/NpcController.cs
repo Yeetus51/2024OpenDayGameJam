@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class NpcController : MonoBehaviour
 {
-    [SerializeField] Movement npcMovement;
+    public Movement npcMovement;
 
-    [SerializeField] bool enableNpc; 
-    [SerializeField] bool stopNpc;
+    public bool enableNpc; 
+    public bool stopNpc;
 
     Vector3[] directions = { new Vector3(1,0,0), new Vector3(-1, 0, 0), new Vector3(0, 0, 1), new Vector3(0, 0, -1), new Vector3(0, 0, 0)};
 
