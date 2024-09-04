@@ -1113,7 +1113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5ac677e9c8c2a4f84b3782e9f1fc77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameras: []
+  cameras:
+  - {fileID: 1144856154}
 --- !u!4 &278100610
 Transform:
   m_ObjectHideFlags: 0
@@ -1779,6 +1780,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1144856154 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8297233950553109077, guid: f0dbab1d548fdbd4f81c6d3fb91a61af, type: 3}
+  m_PrefabInstance: {fileID: 7022745930343097085}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3625b94859c62534abad913d60964361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1144856156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5471189533907303982, guid: f0dbab1d548fdbd4f81c6d3fb91a61af, type: 3}
@@ -2236,7 +2248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorManager: {fileID: 1543893085}
   npcManager: {fileID: 791206370}
-  cameraManager: {fileID: 0}
+  cameraManager: {fileID: 278100609}
   interactionRange: 2
 --- !u!4 &1429021749
 Transform:
@@ -2650,6 +2662,10 @@ PrefabInstance:
       propertyPath: light
       value: 
       objectReference: {fileID: 1710313903}
+    - target: {fileID: 8297233950553109077, guid: f0dbab1d548fdbd4f81c6d3fb91a61af, type: 3}
+      propertyPath: active
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

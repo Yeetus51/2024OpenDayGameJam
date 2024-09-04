@@ -47,7 +47,9 @@ public class InteractionManager : MonoBehaviour
     {
 
         float closestDoorDist = float.MaxValue;
+        float closestCamDist = float.MaxValue;
         DoorController closestDoor = null; 
+        Camera closestCam = null;
 
         foreach (var door in doorManager.doorControllers)
         {
@@ -58,11 +60,26 @@ public class InteractionManager : MonoBehaviour
                 closestDoor = door; 
             }
         }
+        foreach (var cam in cameraManager.cameras)
+        {
+            float dist = (player.transform.position - cam.transform.position).magnitude;
+            if (dist < closestCamDist)
+            {
+                closestCamDist = dist;
+                closestCam = cam;
+            }
+        }
 
-        if(closestDoorDist <= interactionRange)
+        if (closestCamDist < closestDoorDist && closestCamDist <= interactionRange)
+        {
+            cameraManager.Interact(closestCam, player); 
+        } else if (closestDoorDist <= interactionRange)
         {
             doorManager.Interact(closestDoor, player);
-        } 
+        }
+
+
+
     }
 
 

@@ -8,11 +8,12 @@ public class CameraManager : MonoBehaviour
 
 
 
-    public void Interact(Camera door, PlayerController player)
+    public void Interact(Camera cam, PlayerController player)
     {
+        Debug.Log("Bruh");
         if (player.hasCamAccess)
         {
-            // Disable cam 
+            cam.KillCam(); 
         }
     }
 
