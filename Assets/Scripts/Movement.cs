@@ -10,6 +10,10 @@ public class Movement : MonoBehaviour
 
     [SerializeField] Rigidbody rb;
 
+    [SerializeField] SpriteRenderer sprite;
+
+    [SerializeField] Animator animator;
+
     Vector3 previousPos = Vector3.zero; 
 
     void Update()
@@ -27,24 +31,33 @@ public class Movement : MonoBehaviour
 
     }
 
-    public void MovePlayer(Vector3 direction)
+    public void MovePlayer(Vector3 direction, bool running = false)
     {
+
+        if (direction.magnitude > 0)
+        {
+            animator.SetBool("Walking", true);
+        }
+        else
+        {
+            animator.SetBool("Walking", false);
+        }
 
         float diff = direction.x;
         if (diff > 0 && Mathf.Abs(diff) > 0.01f)
         {
-            transform.localScale = new Vector3(0.1f, transform.localScale.y, transform.localScale.z);
+            sprite.flipX = false; 
         }
         else if (Mathf.Abs(diff) > 0.01f)
         {
-            transform.localScale = new Vector3(-0.1f, transform.localScale.y, transform.localScale.z);
+            sprite.flipX = true;
         }
 
 
         previousPos = transform.position;
 
 
-        rb.AddForce(direction.normalized * speed * Time.deltaTime, ForceMode.VelocityChange);
+        rb.AddForce(direction.normalized * speed * (running? 1.5f:1) * Time.deltaTime, ForceMode.VelocityChange);
     }
     public void ToggleMovement(bool state)
     {

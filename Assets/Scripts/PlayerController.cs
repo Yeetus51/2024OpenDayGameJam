@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Movement playerMovement;
     [SerializeField] InteractionManager interactionManager;
 
-    [SerializeField] Animator animator; 
+
 
     bool canMoveSelf = true;
     bool canMoveNpc = true;
@@ -26,7 +26,9 @@ public class PlayerController : MonoBehaviour
 
 
     bool isDismounting = false;
-    Vector3 dismountingPosition; 
+    Vector3 dismountingPosition;
+
+    [SerializeField] Animator animator; 
 
 
 
@@ -68,15 +70,7 @@ public class PlayerController : MonoBehaviour
 
             if (canMoveSelf)
             {
-                if(direction.magnitude > 0)
-                {
-                    playerMovement.MovePlayer(direction);
-                    animator.SetBool("Walking", true);
-                }
-                else
-                {
-                    animator.SetBool("Walking", false);
-                }
+                playerMovement.MovePlayer(direction, Input.GetKey(KeyCode.LeftShift));
             }
             else if (targetNpc) targetNpc.npcMovement.MovePlayer(direction); 
                  
@@ -94,11 +88,14 @@ public class PlayerController : MonoBehaviour
     }
     public void DismountNpc()
     {
+        Vector3 direction = CheckArea();
+        if (direction.y != 0) direction *= 1.5f; 
 
-
-        dismountingPosition =  CheckArea() + transform.position;
+        dismountingPosition = direction + transform.position;
         isDismounting = true;
         canMoveNpc = false;
+
+        animator.SetBool("Possessing", false);
 
 
     }
@@ -132,27 +129,27 @@ public class PlayerController : MonoBehaviour
 
         if (jumpingToNpc)
         {
-            Vector3 direction = (targetNpc.transform.position - transform.position);
+            Vector3 direction = (targetNpc.mountPoint.transform.position - transform.position);
             float distance = direction.magnitude;
             transform.position = transform.position + direction.normalized * jumpSpeed; 
 
             if(distance < minDistanceToNpc)
             {
                 jumpingToNpc = false;
-                transform.position = targetNpc.transform.position;
+                transform.position = targetNpc.mountPoint.transform.position;
                 transform.SetParent(targetNpc.transform, true);
 
                 targetNpc.stopNpc = true;
                 canMoveNpc = true;
-                float xScale = targetNpc.transform.localScale.x > 0 ? 1 : -1;
-                transform.localScale = new Vector3(xScale, 1, 1); 
+
+                animator.SetBool("Possessing", true); 
+
                 tag = "NpcPlayer";
 
                 if (targetNpc.tag == "Guard")
                 {
                     hasKey = true;
                 }
-
                 if (targetNpc.tag == "Engineer")
                 {
                     hasCamAccess = true;

@@ -11,12 +11,16 @@ public class NpcController : MonoBehaviour
 
     Vector3[] directions = { new Vector3(1,0,0), new Vector3(-1, 0, 0), new Vector3(0, 1, 0), new Vector3(0, -1, 0), new Vector3(0, 0, 0)};
 
-    Vector3 movementDirection;
+    Vector3 movementDirection = Vector3.zero;
 
     float timer;
 
     float minDuration = 1; 
     float maxDuration = 2;
+
+    public GameObject mountPoint; 
+
+
 
 
     private void Update()
@@ -37,7 +41,7 @@ public class NpcController : MonoBehaviour
 
         if(timer > 0)
         {
-            npcMovement.MovePlayer(movementDirection); 
+            npcMovement.MovePlayer(movementDirection);
             timer -= Time.deltaTime;
             if (timer <= 0) NpcMovement();
         }

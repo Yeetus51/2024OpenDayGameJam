@@ -18,7 +18,9 @@ public class Camera : MonoBehaviour
     [SerializeField] Light2D light; 
 
 
-    [SerializeField] bool active; 
+    [SerializeField] bool active;
+
+    [SerializeField] bool canBeKilled; 
 
 
     float timer;
@@ -26,6 +28,7 @@ public class Camera : MonoBehaviour
 
     public void KillCam()
     {
+        if (!canBeKilled) return; 
         active = false;
         light.intensity = 0; 
     }
