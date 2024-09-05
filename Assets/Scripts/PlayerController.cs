@@ -7,7 +7,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Movement playerMovement;
     [SerializeField] InteractionManager interactionManager;
 
-    [SerializeField] ParticleSystem blood; 
+    [SerializeField] ParticleSystem blood;
+    [SerializeField] AudioSource Snapneck;
+    [SerializeField] AudioSource WalkSound;
+    [SerializeField] AudioClip AlienWalk;
+    [SerializeField] AudioClip NPCWalk;
 
 
 
@@ -58,6 +62,7 @@ public class PlayerController : MonoBehaviour
 
         if (canMoveSelf || canMoveNpc)
         {
+            
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
                 direction += Vector3.up;
@@ -77,6 +82,15 @@ public class PlayerController : MonoBehaviour
 
             if (canMoveSelf)
             {
+                if(direction.magnitude > 0)
+                {
+                    WalkSound.Play();
+                }
+                else
+                {
+                    WalkSound.Stop();
+                }
+
                 playerMovement.MovePlayer(direction, Input.GetKey(KeyCode.LeftShift));
             }
             else if (targetNpc) targetNpc.npcMovement.MovePlayer(direction); 
@@ -155,9 +169,11 @@ public class PlayerController : MonoBehaviour
 
                 StartCoroutine(camerabruh.Shake(0.2f, 0.07f));
                 blood.Play();
-
+                Snapneck.Play();
 
                 tag = "NpcPlayer";
+
+                WalkSound.clip = NPCWalk;
 
                 if (targetNpc.tag == "Guard")
                 {
@@ -202,7 +218,7 @@ public class PlayerController : MonoBehaviour
                 {
                     canCleanPiss = false;
                 }
-
+                WalkSound.clip = AlienWalk;
                 if (targetNpc.completedTask)
                 {
                     //kill the bitch 
