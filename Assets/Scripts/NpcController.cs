@@ -18,7 +18,13 @@ public class NpcController : MonoBehaviour
     float minDuration = 1; 
     float maxDuration = 2;
 
-    public GameObject mountPoint; 
+    public GameObject mountPoint;
+
+
+    public bool completedTask = false;
+
+
+    [SerializeField] ParticleSystem deathBlood; 
 
 
 
@@ -64,6 +70,16 @@ public class NpcController : MonoBehaviour
         movementDirection = direction;
         timer = duration; 
 
+
+    }
+
+    public void Kill()
+    {
+        deathBlood.Play();
+        deathBlood.transform.parent = null;
+        npcMovement.enabled = false;
+        gameObject.SetActive(false); 
+        
 
     }
 

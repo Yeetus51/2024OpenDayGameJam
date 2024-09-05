@@ -10,9 +10,9 @@ public class CameraManager : MonoBehaviour
 
     public void Interact(Camera cam, PlayerController player)
     {
-        Debug.Log("Bruh");
         if (player.hasCamAccess)
         {
+            player.targetNpc.completedTask = true; 
             cam.KillCam(); 
         }
     }

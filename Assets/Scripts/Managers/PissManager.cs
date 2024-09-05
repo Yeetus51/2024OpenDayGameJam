@@ -15,7 +15,8 @@ public class PissManager : MonoBehaviour
         {
             if (piss.RecudePiss(pissReductionRate))
             {
-                pisses.Remove(piss); 
+                pisses.Remove(piss);
+                player.targetNpc.completedTask = true; 
             }
         }
         

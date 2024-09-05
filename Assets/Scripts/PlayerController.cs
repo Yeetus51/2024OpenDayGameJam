@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Movement playerMovement;
     [SerializeField] InteractionManager interactionManager;
 
+    [SerializeField] ParticleSystem blood; 
+
 
 
     bool canMoveSelf = true;
@@ -16,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool hasCamAccess = false;
     public bool canCleanPiss = false;
 
-    NpcController targetNpc;
+    public NpcController targetNpc;
     bool jumpingToNpc = false;
     [SerializeField] float jumpSpeed;
 
@@ -28,7 +30,12 @@ public class PlayerController : MonoBehaviour
     bool isDismounting = false;
     Vector3 dismountingPosition;
 
-    [SerializeField] Animator animator; 
+    [SerializeField] Animator animator;
+
+    [SerializeField] CamShake camerabruh;
+
+
+   
 
 
 
@@ -100,6 +107,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+
     Vector3 CheckArea()
     {
         float maxDistance = 1.5f; 
@@ -142,7 +151,11 @@ public class PlayerController : MonoBehaviour
                 targetNpc.stopNpc = true;
                 canMoveNpc = true;
 
-                animator.SetBool("Possessing", true); 
+                animator.SetBool("Possessing", true);
+
+                StartCoroutine(camerabruh.Shake(0.2f, 0.07f));
+                blood.Play();
+
 
                 tag = "NpcPlayer";
 
@@ -189,6 +202,15 @@ public class PlayerController : MonoBehaviour
                 {
                     canCleanPiss = false;
                 }
+
+                if (targetNpc.completedTask)
+                {
+                    //kill the bitch 
+                    targetNpc.Kill();
+                    interactionManager.npcManager.npcs.Remove(targetNpc); 
+
+                }
+
 
                 targetNpc = null;
             }

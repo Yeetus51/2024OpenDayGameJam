@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PissController : MonoBehaviour
 {
-
+    [SerializeField] ParticleSystem particleSystem; 
     int reductions = 5; 
 
     public bool RecudePiss(float rate)
     {
+        particleSystem.Play();
         reductions--;
         if(reductions == 0)
         {
@@ -18,7 +19,6 @@ public class PissController : MonoBehaviour
         transform.localScale *= rate;
 
         return false; 
-
     }
 
 }

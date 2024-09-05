@@ -12,10 +12,12 @@ public class NpcManager : MonoBehaviour
 
         player.JumpToNpc(npc); 
 
-
-
     }
-
+    
+    public void RemoveNpc(NpcController npc)
+    {
+        npcs.Remove(npc);
+    }
 
 
 

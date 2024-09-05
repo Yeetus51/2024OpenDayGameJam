@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractionManager : MonoBehaviour
 {
     [SerializeField] DoorManager doorManager;
-    [SerializeField] NpcManager npcManager;
+    public NpcManager npcManager;
     [SerializeField] CameraManager cameraManager; 
     [SerializeField] PissManager pissManager;
 

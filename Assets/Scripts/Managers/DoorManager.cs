@@ -15,6 +15,7 @@ public class DoorManager : MonoBehaviour
 
         if (player.hasKey)
         {
+            player.targetNpc.completedTask = true; 
             door.OpenDoor();
         }
     }
