@@ -15,8 +15,8 @@ public class Camera : MonoBehaviour
     [SerializeField] float DOF;
     [SerializeField] float rotation;
 
-    [SerializeField] Light2D light; 
-
+    [SerializeField] Light2D light;
+    [SerializeField] AudioSource DetectPlayerSound;
 
     [SerializeField] bool active;
 
@@ -55,7 +55,8 @@ public class Camera : MonoBehaviour
             {
                 if(hit.transform.tag == "Player")
                 {
-                    Debug.Log("Game OVER!"); 
+                    Debug.Log("Game OVER!");
+                    DetectPlayerSound.Play();
                 }
             }
 
