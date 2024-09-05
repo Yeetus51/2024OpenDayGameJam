@@ -175,6 +175,7 @@ public class PlayerController : MonoBehaviour
 
                 WalkSound.clip = NPCWalk;
 
+
                 if (targetNpc.tag == "Guard")
                 {
                     hasKey = true;
